@@ -17,28 +17,32 @@ Console.WriteLine("[[[[[ ADMIN MENU ]]]]]\r\n" +
     "5.Save Settings\r\n"+
     "----------------------------------------------------------------------");
 
+
+Console.Write("Your choice:");
+int choice = int.Parse(Console.ReadLine());
+
+switch (choice)
+{
+    case 1:
+        var item = new Drink();
+        item.Name = Console.ReadLine();
+        item.Price = double.Parse(Console.ReadLine());
+        item.Volume = int.Parse(Console.ReadLine());
+        
+        
+        break;
+}
+
+
 public class Drink
 {
     
         public string Name { get; set; }       
         public double Price { get; set; } 
         public double Volume { get; set; }
-        public double Water { get; set; }      
-        public double Coffee { get; set; }     
-        public double Tea { get; set; }        
-        public double Sugar { get; set; }      
+     
 
         
-        public Drink(string name, double price, double water, double coffee, double tea, double sugar, double volume)
-        {
-            Name = name;
-            Price = price;
-            Water = water;
-            Coffee = coffee;
-            Tea = tea;
-            Sugar = sugar;
-            Volume = volume;
-        }
+      
     }
-
 
