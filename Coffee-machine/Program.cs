@@ -10,10 +10,18 @@
 
 using System.Diagnostics;
 using System.Xml.Linq;
+List<Drink> items = new()
+{
+    new Drink() { Name = "COFFE", Price = 230230, Volume = 20 },
+    new Drink() { Name = "CANADIANO", Price = 230230, Volume = 20 },
+    new Drink() { Name = "KAVA", Price = 230230, Volume = 20 },
+};
 
-var item = new Drink();
-
-
+List<Component> Components = new()
+{
+    new Component() { Name = "COFFE", Weight=30 },
+    new Component() { Name ="Water", Weight=30 },
+};
 while (true)
 {
     Console.Clear();
@@ -23,9 +31,13 @@ while (true)
         "1.Loading the machine with water, coffee, tea, sugar\r\n" +
         "2.Output of statistics on the availability of ingredients for making drinks\r\n" +
         "3.Change in prices for drinks\r\n" +
-        "4.Removing the cache\r\n" +
-        "5.Save Settings\r\n" +
-        "6.Show All\r\n" +
+        "4.Add new drink\r\n" +
+        "5.Removing the cache\r\n" +
+        "6.Save Settings\r\n" +
+        "7.Show Drink\r\n" +
+        "8.Show Componens\r\n" +
+        "9.Find Drink\r\n" +
+
         "----------------------------------------------------------------------");
 
 
@@ -34,11 +46,38 @@ while (true)
     switch (choice)
     {
         case 1:
-            item.ReadFromConsole();
+            Component newItem = new();
+            newItem.ReadFromConsole();
+            Components.Add(newItem);
+            break;
+        case 4:
+            Drink newItem2 = new();
+            newItem2.ReadFromConsole();
+            items.Add(newItem2);
             break;
 
-        case 6:
-            item.Show();
+        case 7:
+            foreach (Drink item in items)
+                item.Show();
+            break;
+        case 8:
+            foreach (Component item in Components)
+                item.Show();
+            break;
+
+        case 9:
+            Console.Write("Enter product name to search: ");
+            string name = Console.ReadLine();
+
+            // логіка пошуку продукта
+            var found = items.Find(x => x.Name == name);
+            if (found == null)
+            {
+                Console.WriteLine("Product not found!");
+                break;
+            }
+
+            found.Show();
             break;
     }
     Console.ReadKey();
@@ -62,18 +101,27 @@ public class Drink
     {
         Console.WriteLine($"Name: {Name}");
         Console.WriteLine($"Price: {Price}$");
-        Console.WriteLine($"Volume:{Volume}$");
+        Console.WriteLine($"Volume:{Volume}(ml)");
     }
 }
 
 
 public class Component
+
 {
     public string Name { get; set; }
     public double Weight { get; set; }
-    public void Show()
+    
+public void ReadFromConsole()
+{
+    Console.Write("Enter name: ");
+    Name = Console.ReadLine();
+    Console.Write("Enter Weight: ");
+    Weight = double.Parse(Console.ReadLine());
+}
+public void Show()
     {
         Console.WriteLine($"Name: {Name}");
-        Console.WriteLine($"Weight: {Weight}"); 
+        Console.WriteLine($"Weight: {Weight}(mg)"); 
     }
 }
