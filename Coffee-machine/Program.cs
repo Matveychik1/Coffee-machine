@@ -9,6 +9,7 @@
 //Замовлення напою(+ оплата)	
 
 using System.Diagnostics;
+using System.Text.Json;
 using System.Xml.Linq;
 List<Drink> items = new()
 {
@@ -33,11 +34,11 @@ while (true)
         "3.Change in prices for drinks\r\n" +
         "4.Add new drink\r\n" +
         "5.Removing the cache\r\n" +
-        "6.Save Settings\r\n" +
+        "6.Save Drinks\n" +
         "7.Show Drink\r\n" +
         "8.Show Componens\r\n" +
         "9.Find Drink\r\n" +
-
+        "10.Load Drinks\n" +
         "----------------------------------------------------------------------");
 
 
@@ -54,6 +55,10 @@ while (true)
             Drink newItem2 = new();
             newItem2.ReadFromConsole();
             items.Add(newItem2);
+            break;
+        case 6:
+            var json = JsonSerializer.Serialize(items);
+            File.WriteAllText("database.json", json);
             break;
 
         case 7:
@@ -79,7 +84,12 @@ while (true)
 
             found.Show();
             break;
+        case 10:
+            var jsonData = File.ReadAllText("database.json");
+            items = JsonSerializer.Deserialize<List<Drink>>(jsonData);
+            break;
     }
+    Console.WriteLine("Натистінь щось для продовження...");
     Console.ReadKey();
 }
 
