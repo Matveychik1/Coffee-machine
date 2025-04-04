@@ -15,7 +15,7 @@ using System.Xml.Linq;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-CoffeeMachine coffee_Machine = new();
+CoffeeMachine1 coffee_Machine = new();
 
 while (true)
 {
@@ -46,38 +46,38 @@ while (true)
             
 
         case 1:
-            Coffee_machine.AddNewDrink();
+            coffee_Machine.AddNewDrink();
             break;
 
        
         case 2:
-            
+            coffee_Machine.Drinkname();
             break;
 
         case 3:
-            
+            coffee_Machine.hz();
             break;
 
         case 4:
-            
+            coffee_Machine.Deletedrink();
             break;
 
         case 5:
-            
+            coffee_Machine.SaveAll();
             break;
-
-        case 6:
             
+        case 6:
+            coffee_Machine.ShowDrink();
             break;
         case 7:
-            
+            coffee_Machine.ShowComponens();
             break;
 
         case 9:
-            
+            coffee_Machine.FindDrink();
             break;
         case 10:
-            
+            coffee_Machine.LoadDrinks();
             break;
     }
     Console.WriteLine("Натистінь щось для продовження...");

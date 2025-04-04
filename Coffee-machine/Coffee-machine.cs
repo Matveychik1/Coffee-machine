@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 
 namespace Coffee_machine
 {
-    internal class Coffee_machine
+    internal class CoffeeMachine1
     {
         List<Drink> items = new()
-{
-    new Drink() { Name = "COFFE", Price = 230230, Volume = 20 },
-    new Drink() { Name = "CANADIANO", Price = 230230, Volume = 20 },
-    new Drink() { Name = "KAVA", Price = 230230, Volume = 20 },
-};
+        {
+            new Drink() { Name = "COFFE", Price = 230230, Volume = 20 },
+            new Drink() { Name = "CANADIANO", Price = 230230, Volume = 20 },
+            new Drink() { Name = "KAVA", Price = 230230, Volume = 20 },
+        };
 
         List<Component> Components = new()
-{
-    new Component() { Name = "COFFE", Weight=30 },
-    new Component() { Name ="Water", Weight=30 },
-};
+        {
+            new Component() { Name = "COFFE", Weight=30 },
+            new Component() { Name ="Water", Weight=30 },
+        };
+
         public void AddNewDrink()
         {
             Component newItem = new();
@@ -60,7 +61,7 @@ namespace Coffee_machine
             if (found2 == null)
             {
                 Console.WriteLine("DRINK not found!");
-                
+                return;
             }
 
             items.Remove(found2);
@@ -90,7 +91,7 @@ namespace Coffee_machine
             if (found == null)
             {
                 Console.WriteLine("Product not found!");
-                
+                return;
             }
 
             found.Show();
