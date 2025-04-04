@@ -14,6 +14,7 @@ using System.Text.Json;
 using System.Xml.Linq;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
+Menu menu = new();
 
 CoffeeMachine1 coffee_Machine = new();
 
@@ -21,23 +22,10 @@ while (true)
 {
     Console.Clear();
 
-    Console.WriteLine("--------------------------Hot drinks machine--------------------------");
-    Console.WriteLine("[[[[[ ADMIN MENU ]]]]]\r\n" +
-        "0.EXIT\r\n" +
-        "1.Loading the machine with water, coffee, tea, sugar\r\n" +
-        "2.Change in prices for drinks\r\n" +
-        "3.Add new drink\r\n" +
-        "4.Removing\r\n" +
-        "5.Save Drinks\n" +
-        "6.Show Drink\r\n" +
-        "7.Show Componens\r\n" +
-        "8.Find Drink\r\n" +
-        "9.Load Drinks\n" +
-        "----------------------------------------------------------------------");
+    menu.ShowMenu();
+    int choice = menu.AskUserInput();
 
 
-    Console.Write("Your choice:");
-    int choice = int.Parse(Console.ReadLine());
     switch (choice)
     {
         case 0:
@@ -46,7 +34,7 @@ while (true)
             
 
         case 1:
-            coffee_Machine.AddNewDrink();
+            coffee_Machine.AddNewDrinkWeight();
             break;
 
        
@@ -55,7 +43,7 @@ while (true)
             break;
 
         case 3:
-            coffee_Machine.hz();
+            coffee_Machine.AddDrink();
             break;
 
         case 4:

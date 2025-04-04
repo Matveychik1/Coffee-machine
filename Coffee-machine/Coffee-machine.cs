@@ -22,7 +22,7 @@ namespace Coffee_machine
             new Component() { Name ="Water", Weight=30 },
         };
 
-        public void AddNewDrink()
+        public void AddNewDrinkWeight()
         {
             Component newItem = new();
             newItem.ReadFromConsole();
@@ -45,7 +45,7 @@ namespace Coffee_machine
                 Console.WriteLine("Drink not found!");
             }
         }
-        public void hz ()
+        public void AddDrink()
         {
             Drink newItem2 = new();
             newItem2.ReadFromConsole();
